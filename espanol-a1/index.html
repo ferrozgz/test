@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>西班牙語 A1・12 週</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbf6ef;--card:#fff;--ink:#2a2420;--mute:#7a6f66;--red:#b8352a;--red2:#962a21;--gold:#e8b23a;--line:#eadfd2;--ok:#2e7d4f;--bad:#c0392b;--soft:#f6ece0}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-tap-highlight-color:transparent}
+header{background:var(--red);color:#fff;padding:18px 18px 16px;position:relative;overflow:hidden}
+header:after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--gold)}
+header h1{margin:0;font-family:Fraunces,serif;font-size:22px;letter-spacing:.3px}
+header p{margin:2px 0 0;opacity:.92;font-size:13px}
+main{max-width:640px;margin:0 auto;padding:14px 14px 96px}
+nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:4px 0 calc(4px + env(safe-area-inset-bottom));z-index:5}
+nav button{flex:1;background:none;border:0;font:inherit;font-size:12px;color:var(--mute);padding:6px 0;cursor:pointer}
+nav button .i{display:block;font-size:20px;line-height:1.2}
+nav button.on{color:var(--red);font-weight:700}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
+h2{font-size:19px;margin:4px 0 10px}
+h3{font-size:16px;margin:0 0 8px;color:var(--red2)}
+.es{font-family:Fraunces,serif;font-weight:600}
+.mute{color:var(--mute);font-size:14px}
+.btn{display:inline-block;border:0;border-radius:10px;padding:11px 16px;font:inherit;font-weight:700;cursor:pointer;background:var(--red);color:#fff}
+.btn.alt{background:var(--soft);color:var(--ink)}
+.btn.ok{background:var(--ok)}
+.btn.full{width:100%;margin-top:8px}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.row .btn{flex:1}
+.bar{height:10px;background:var(--soft);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--gold);border-radius:6px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.stats b{display:block;font-size:22px;color:var(--red2)}
+.stats span{font-size:12px;color:var(--mute)}
+.week{display:flex;align-items:center;gap:12px;cursor:pointer}
+.wn{flex:0 0 42px;height:42px;border-radius:50%;background:var(--soft);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--red2)}
+.wn.done{background:var(--ok);color:#fff}
+.wn.now{background:var(--red);color:#fff}
+.week .t{flex:1}
+.week .t small{display:block;color:var(--mute)}
+.words{list-style:none;margin:0;padding:0}
+.words li{display:flex;justify-content:space-between;gap:10px;padding:9px 4px;border-bottom:1px solid var(--line);cursor:pointer}
+.words li:last-child{border-bottom:0}
+.words li:active{background:var(--soft)}
+.words .z{color:var(--mute);text-align:right;font-size:15px}
+.words .k{color:var(--ok);font-size:13px}
+.spk{font-size:15px;margin-right:4px}
+.gram ul{padding-left:20px;margin:6px 0}
+.gram li{margin:4px 0}
+.gram table{border-collapse:collapse;width:100%;margin:8px 0;font-size:15px}
+.gram td{border:1px solid var(--line);padding:5px 8px}
+.gram td:first-child{color:var(--mute)}
+.dlg p{margin:0;padding:8px 10px;border-radius:10px;background:var(--soft);margin-bottom:6px;cursor:pointer}
+.dlg p:nth-child(even){background:#fff3d6;margin-left:24px}
+.dlg p small{display:block;color:var(--mute)}
+.task{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.task:last-child{border-bottom:0}
+.cb{width:24px;height:24px;border-radius:7px;border:2px solid var(--line);flex:0 0 24px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px}
+.task.on .cb{background:var(--ok);border-color:var(--ok)}
+.task.on span{color:var(--mute);text-decoration:line-through}
+.task.today span{font-weight:700}
+.flash{min-height:230px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;user-select:none}
+.flash .big{font-size:30px}
+.flash .zh{font-size:24px;margin-top:10px}
+.q{font-size:24px;text-align:center;margin:16px 0}
+.opt{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:12px 14px;margin:8px 0;font:inherit;cursor:pointer}
+.opt.good{border-color:var(--ok);background:#e6f4ea}
+.opt.badx{border-color:var(--bad);background:#fbe9e7}
+select,input[type=date]{font:inherit;padding:9px;border:1px solid var(--line);border-radius:10px;background:#fff;width:100%}
+input[type=range]{width:100%}
+.back{background:none;border:0;font:inherit;color:var(--red2);padding:0 0 8px;cursor:pointer}
+.tip{background:#fff3d6;border-radius:12px;padding:12px 14px;font-size:15px}
+#toast{position:fixed;left:50%;bottom:86px;transform:translateX(-50%);background:#2a2420;color:#fff;padding:9px 14px;border-radius:10px;font-size:14px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:9;max-width:90%}
+#toast.on{opacity:.95}
+.big-emoji{font-size:44px;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <h1>Español A1 · 12 semanas</h1>
+  <p>西班牙語 A1・每天 30 分鐘，三個月完成</p>
+</header>
+<main id="app"></main>
+<nav id="nav">
+  <button data-go="home"><span class="i">🏠</span>今天</button>
+  <button data-go="course"><span class="i">📚</span>課程</button>
+  <button data-go="cards"><span class="i">🃏</span>單字卡</button>
+  <button data-go="quiz"><span class="i">✏️</span>測驗</button>
+  <button data-go="settings"><span class="i">⚙️</span>設定</button>
+</nav>
+<div id="toast"></div>
+<script>
+/* ---------- 課程內容 ---------- */
+const W=[
+{t:"發音與打招呼",es:"Saludos",w:[
+["Hola","你好／嗨"],["Buenos días","早安"],["Buenas tardes","午安（下午好）"],["Buenas noches","晚安（晚上好）"],["Adiós","再見"],["Hasta luego","待會見"],["Hasta mañana","明天見"],["Gracias","謝謝"],["De nada","不客氣"],["Por favor","請"],["Perdón","對不起／不好意思"],["Sí","是／對"],["No","不／不是"],["¿Cómo estás?","你好嗎？"],["Muy bien, gracias.","很好，謝謝。"],["¿Y tú?","你呢？"],["Mucho gusto.","很高興認識你。"]],
+g:`<p>西班牙語的拼字和發音非常規則，學會規則後幾乎看到就能唸。</p><ul>
+<li><b>母音</b>只有 5 個，永遠同一個音：a（啊）e（欸）i（一）o（喔）u（嗚）</li>
+<li><b>h</b> 不發音：hola 唸「ola」</li>
+<li><b>j</b>，以及 e、i 前面的 <b>g</b>：喉嚨裡用力的「喝」：jamón、gente</li>
+<li><b>ñ</b> 像「ㄋㄧ」：España、mañana</li>
+<li><b>ll</b> 和 <b>y</b> 像「ㄧ」（有時接近輕的「ㄐ」）：me llamo、yo</li>
+<li>e、i 前面的 <b>c</b> 和 <b>z</b>：在西班牙唸舌尖輕咬牙齒的 th 音：gracias、cerveza</li>
+<li><b>r</b> 舌尖彈一下；字首的 r 和 <b>rr</b> 要連續彈舌：perro、Roma</li>
+<li><b>重音</b>：以母音、n、s 結尾 → 倒數第二音節（<u>ho</u>-la）；其他子音結尾 → 最後一個音節（es-pa-<u>ñol</u>）；有重音符號（á é í ó ú）就照符號。</li></ul>
+<p>問句和感嘆句前後都有符號：<b>¿…?</b> <b>¡…!</b></p>`,
+d:[["¡Hola! Buenos días.","你好！早安。"],["¡Hola! ¿Cómo estás?","嗨！你好嗎？"],["Muy bien, gracias. ¿Y tú?","很好，謝謝。你呢？"],["Bien también. ¡Hasta luego!","我也很好。待會見！"]],
+p:"每天早上和晚上用西語跟老公打招呼（Buenos días／Buenas noches），他回答後你要問 ¿Y tú?。請他糾正你的 r 和 j 的發音。"},
+
+{t:"自我介紹",es:"Presentarse",w:[
+["Me llamo…","我叫…"],["¿Cómo te llamas?","你叫什麼名字？"],["Soy de Taiwán.","我來自台灣。"],["¿De dónde eres?","你從哪裡來？"],["Soy taiwanesa.","我是台灣人（女性）。"],["Él es español.","他是西班牙人。"],["Vivo en Taoyuan.","我住在桃園。"],["Hablo chino e inglés.","我會說中文和英文。"],["Hablo un poco de español.","我會說一點西班牙語。"],["No entiendo.","我聽不懂。"],["¿Puedes repetir, por favor?","可以請你再說一次嗎？"],["Más despacio, por favor.","請說慢一點。"],["¿Cómo se dice … en español?","…用西班牙語怎麼說？"],["mi marido","我老公"],["Igualmente.","我也是（回應「很高興認識你」）"]],
+g:`<p><b>ser（是）</b>用來說身分、國籍、職業：</p>
+<table><tr><td>我 yo</td><td class="es">soy</td></tr><tr><td>你 tú</td><td class="es">eres</td></tr><tr><td>他／她／您 él/ella/usted</td><td class="es">es</td></tr><tr><td>我們 nosotros</td><td class="es">somos</td></tr><tr><td>你們 vosotros</td><td class="es">sois</td></tr><tr><td>他們／您們 ellos/ustedes</td><td class="es">son</td></tr></table>
+<ul><li>主詞常常省略：<b>Soy</b> de Taiwán（不用說 Yo soy）。</li>
+<li>國籍有<b>陰陽性</b>：taiwanés（男）／taiwanesa（女），español（男）／española（女）。你是女生，所以說 <b>Soy taiwanesa</b>。</li>
+<li><b>tú</b> = 你（朋友、家人）；<b>usted</b> = 您（陌生人、長輩、正式場合）。</li></ul>`,
+d:[["¿Cómo te llamas?","你叫什麼名字？"],["Me llamo Mei. ¿Y tú?","我叫美。你呢？"],["Me llamo Carlos. ¿De dónde eres?","我叫 Carlos。你從哪裡來？"],["Soy de Taiwán. Vivo en Taoyuan.","我來自台灣，住在桃園。"],["¡Mucho gusto!","很高興認識你！"],["Igualmente.","我也是。"]],
+p:"請老公扮演你在西班牙遇到的新朋友。用西語自我介紹 1 分鐘：名字、國籍、住哪裡、會說什麼語言。聽不懂時練習說 No entiendo / Más despacio, por favor。"},
+
+{t:"數字與年齡",es:"Números 0–20",w:[
+["cero","0"],["uno","1"],["dos","2"],["tres","3"],["cuatro","4"],["cinco","5"],["seis","6"],["siete","7"],["ocho","8"],["nueve","9"],["diez","10"],["once","11"],["doce","12"],["trece","13"],["catorce","14"],["quince","15"],["dieciséis","16"],["diecisiete","17"],["dieciocho","18"],["diecinueve","19"],["veinte","20"],["treinta","30"],["¿Cuántos años tienes?","你幾歲？"],["Tengo treinta años.","我三十歲。"],["¿Cuál es tu número de teléfono?","你的電話號碼是多少？"]],
+g:`<p><b>tener（有）</b>是最重要的動詞之一。西班牙語用「有幾年」來說年齡：<b>Tengo 30 años</b> = 我有 30 年 = 我 30 歲。</p>
+<table><tr><td>yo</td><td class="es">tengo</td></tr><tr><td>tú</td><td class="es">tienes</td></tr><tr><td>él/ella/usted</td><td class="es">tiene</td></tr><tr><td>nosotros</td><td class="es">tenemos</td></tr><tr><td>vosotros</td><td class="es">tenéis</td></tr><tr><td>ellos/ustedes</td><td class="es">tienen</td></tr></table>
+<ul><li>16–19 是「10 和 6」連在一起：dieci + seis = dieciséis。</li>
+<li>tener 也用在感覺：tengo hambre（我餓）、tengo sed（我渴）、tengo frío（我冷）。</li>
+<li>電話號碼通常一個一個或兩個兩個唸。</li></ul>`,
+d:[["¿Cuántos años tienes?","你幾歲？"],["Tengo treinta años. ¿Y tú?","我三十歲。你呢？"],["Yo también tengo treinta.","我也三十歲。"],["¿Y tu hermana?","那你姊妹呢？"],["Mi hermana tiene veinte años.","我妹妹二十歲。"]],
+p:"互相出題：老公說一個數字（0–20），你寫下來；再交換。然後用西語問彼此家人的年紀：¿Cuántos años tiene tu madre?"},
+
+{t:"家人",es:"La familia",w:[
+["la familia","家庭／家人"],["el padre","父親"],["la madre","母親"],["los padres","父母"],["el marido / el esposo","丈夫"],["la mujer / la esposa","妻子"],["el hijo","兒子"],["la hija","女兒"],["el hermano","哥哥／弟弟"],["la hermana","姊姊／妹妹"],["el abuelo","爺爺／外公"],["la abuela","奶奶／外婆"],["el suegro","公公（配偶的父親）"],["la suegra","婆婆（配偶的母親）"],["el perro","狗"],["Tengo dos hermanos.","我有兩個兄弟姊妹。"],["Esta es mi suegra.","這是我婆婆。"]],
+g:`<p>西班牙語的名詞有<b>陰陽性</b>。通常 -o 結尾是陽性，-a 結尾是陰性。</p>
+<table><tr><td>定冠詞（那個）</td><td class="es">el (陽) · la (陰) · los · las</td></tr><tr><td>不定冠詞（一個）</td><td class="es">un · una · unos · unas</td></tr></table>
+<ul><li>複數：母音結尾 +s（hijo → hijos），子音結尾 +es（señor → señores）。</li>
+<li>所有格：<b>mi</b>／mis（我的）、<b>tu</b>／tus（你的）、<b>su</b>／sus（他的／她的／您的）：mi madre, mis padres。</li>
+<li>陽性複數可以包含男女：los hermanos = 兄弟姊妹，los padres = 父母。</li>
+<li>介紹人：<b>Este es</b> mi padre（男）、<b>Esta es</b> mi madre（女）。</li></ul>`,
+d:[["¿Tienes hermanos?","你有兄弟姊妹嗎？"],["Sí, tengo una hermana.","有，我有一個姊妹。"],["¿Cómo se llama?","她叫什麼名字？"],["Se llama Lin. Es muy simpática.","她叫 Lin，人很好。"]],
+p:"拿出手機裡的家庭照片，用西語介紹：Esta es mi madre. Este es mi hermano…。也請老公介紹他的家人——你未來的西班牙家人！"},
+
+{t:"食物與飲料",es:"Comida y bebida",w:[
+["el agua","水"],["el café con leche","咖啡牛奶（拿鐵）"],["el té","茶"],["la cerveza","啤酒"],["el vino tinto","紅酒"],["el zumo de naranja","柳橙汁"],["el pan","麵包"],["el jamón","火腿"],["el queso","起司"],["la tortilla de patatas","西班牙馬鈴薯烘蛋"],["la paella","西班牙燉飯"],["el pollo","雞肉"],["el pescado","魚（食物）"],["la carne","肉"],["la fruta","水果"],["Tengo hambre.","我餓了。"],["Me gusta el café.","我喜歡咖啡。"],["No me gustan las aceitunas.","我不喜歡橄欖。"],["¡Me encanta!","我超愛！"]],
+g:`<p><b>gustar（喜歡）</b>的用法和中文不一樣，字面上是「某物讓我喜歡」：</p>
+<ul><li><b>Me gusta</b> + 單數名詞／動詞原形：Me gusta el café. Me gusta cocinar.</li>
+<li><b>Me gustan</b> + 複數名詞：Me gustan las frutas.</li>
+<li>換人：<b>me</b>（我）、<b>te</b>（你）、<b>le</b>（他／她／您）、<b>nos</b>（我們）、<b>os</b>（你們）、<b>les</b>（他們）：¿Te gusta el vino?</li>
+<li>否定：<b>No</b> me gusta…</li>
+<li>回應：A mí también（我也是）／A mí tampoco（我也不）。</li></ul>`,
+d:[["¿Te gusta la paella?","你喜歡西班牙燉飯嗎？"],["Sí, me gusta mucho.","喜歡，非常喜歡。"],["¿Y el jamón?","那火腿呢？"],["¡Me encanta!","我超愛！"]],
+p:"一起做菜或吃飯時，說出每樣食物的西語名稱，並說 Me gusta / No me gusta。請老公推薦他最喜歡的西班牙菜，用西語問他：¿Qué te gusta comer?"},
+
+{t:"在餐廳與酒吧",es:"En el restaurante",w:[
+["Una mesa para dos, por favor.","請給我們兩人的位子。"],["La carta, por favor.","請給我菜單。"],["¿Qué me recomienda?","您推薦什麼？"],["Quiero…","我要…"],["Quisiera…","我想要…（較禮貌）"],["Para mí, …","我的話，要…"],["de postre","甜點（點餐時）"],["La cuenta, por favor.","請結帳。"],["¿Cuánto cuesta?","多少錢？"],["¿Puedo pagar con tarjeta?","可以刷卡嗎？"],["veintiuno","21"],["treinta y cinco","35"],["cuarenta","40"],["cincuenta","50"],["sesenta","60"],["setenta","70"],["ochenta","80"],["noventa","90"],["cien","100"]],
+g:`<p><b>querer（想要）</b>是「不規則」動詞：e 變成 ie。</p>
+<table><tr><td>yo</td><td class="es">quiero</td></tr><tr><td>tú</td><td class="es">quieres</td></tr><tr><td>él/ella/usted</td><td class="es">quiere</td></tr><tr><td>nosotros</td><td class="es">queremos</td></tr><tr><td>vosotros</td><td class="es">queréis</td></tr><tr><td>ellos/ustedes</td><td class="es">quieren</td></tr></table>
+<ul><li>點餐時 <b>Quisiera…</b> 比 Quiero… 更有禮貌。</li>
+<li>數字：21–29 寫成一個字（veintiuno, veintidós…），31 以後用 <b>y</b> 連接：treinta <b>y</b> uno, cuarenta <b>y</b> cinco。</li>
+<li>價錢：4,50 € = cuatro euros <b>con</b> cincuenta。西班牙用逗號表示小數點。</li></ul>`,
+d:[["Hola, ¿qué quieren tomar?","你好，你們想喝什麼？"],["Para mí, un café con leche, por favor.","我要一杯咖啡牛奶，謝謝。"],["Y para mí, una cerveza.","我要一杯啤酒。"],["¿Algo más?","還要別的嗎？"],["No, gracias. La cuenta, por favor.","不用了，謝謝。請結帳。"],["Son cuatro euros con cincuenta.","一共四歐元五十分。"]],
+p:"在家模擬西班牙酒吧：老公當服務生，你點飲料和 tapas、問價錢、結帳。再交換角色——你當服務生！"},
+
+{t:"城市與問路",es:"En la ciudad",w:[
+["la casa","房子／家"],["el piso","公寓（西班牙用法）"],["la calle","街道"],["el supermercado","超市"],["la farmacia","藥局"],["el hospital","醫院"],["el banco","銀行"],["la estación de tren","火車站"],["el aeropuerto","機場"],["el baño","廁所"],["¿Dónde está…?","…在哪裡？"],["a la derecha","在右邊／往右"],["a la izquierda","在左邊／往左"],["todo recto","直走"],["cerca","近"],["lejos","遠"],["al lado de","在…旁邊"],["¿Hay una farmacia cerca?","附近有藥局嗎？"]],
+g:`<p><b>estar</b> 也是「是／在」，用來說<b>位置</b>和<b>狀態</b>：</p>
+<table><tr><td>yo</td><td class="es">estoy</td></tr><tr><td>tú</td><td class="es">estás</td></tr><tr><td>él/ella/usted</td><td class="es">está</td></tr><tr><td>nosotros</td><td class="es">estamos</td></tr><tr><td>vosotros</td><td class="es">estáis</td></tr><tr><td>ellos/ustedes</td><td class="es">están</td></tr></table>
+<ul><li><b>hay</b> = 有（存在），不變化：Hay un bar aquí（這裡有一家酒吧）。</li>
+<li>比較：<b>Hay una</b> farmacia cerca（附近有一家藥局）↔ <b>La</b> farmacia <b>está</b> cerca（那家藥局在附近）。</li>
+<li>a + el = <b>al</b>、de + el = <b>del</b>：al lado <b>del</b> banco（在銀行旁邊）。</li></ul>`,
+d:[["Perdón, ¿dónde está la farmacia?","不好意思，藥局在哪裡？"],["Está cerca. Todo recto y a la derecha.","很近。直走然後右轉。"],["¿Hay un supermercado por aquí?","這附近有超市嗎？"],["Sí, al lado del banco.","有，在銀行旁邊。"]],
+p:"用 Google 地圖打開老公家鄉的街景，問他：¿Dónde está la farmacia? ¿Hay un supermercado cerca? 讓他用西語指路，你跟著地圖走。"},
+
+{t:"時間與星期",es:"La hora y los días",w:[
+["¿Qué hora es?","現在幾點？"],["Es la una.","一點。"],["Son las tres.","三點。"],["Son las tres y media.","三點半。"],["Son las cuatro y cuarto.","四點十五分。"],["Son las cinco menos cuarto.","四點四十五分。"],["lunes","星期一"],["martes","星期二"],["miércoles","星期三"],["jueves","星期四"],["viernes","星期五"],["sábado","星期六"],["domingo","星期日"],["hoy","今天"],["mañana","明天"],["ayer","昨天"],["el fin de semana","週末"],["por la mañana","早上"],["por la tarde","下午"],["por la noche","晚上"],["¿A qué hora…?","幾點…？"]],
+g:`<ul><li>一點用單數：<b>Es la</b> una。其他用複數：<b>Son las</b> dos, son las ocho。</li>
+<li><b>y</b> = 過：y cinco（過五分）、y cuarto（十五分）、y media（半）。</li>
+<li><b>menos</b> = 差：Son las cinco menos cuarto = 差十五分五點 = 4:45。</li>
+<li>「在幾點」：<b>a las</b> + 數字：Como a las dos（我兩點吃午餐）。</li>
+<li>星期不用大寫。<b>el</b> lunes = 這個星期一；<b>los</b> lunes = 每個星期一。</li>
+<li>注意：<b>mañana</b> 是「明天」，<b>la mañana</b> 是「早上」。</li></ul>
+<p class="mute">小知識：西班牙人大約 14:00 吃午餐、21:00 以後才吃晚餐！</p>`,
+d:[["¿Qué hora es?","現在幾點？"],["Son las tres y media.","三點半。"],["¿A qué hora es la cena?","晚餐幾點？"],["A las nueve. En España cenamos tarde.","九點。在西班牙我們很晚吃晚餐。"]],
+p:"今天一整天只用西語問時間：¿Qué hora es? 然後一起用西語排下週的行程：El lunes a las siete…"},
+
+{t:"日常生活",es:"La rutina",w:[
+["me levanto","我起床"],["me ducho","我洗澡"],["desayuno","我吃早餐"],["trabajo","我工作"],["como","我吃午餐／我吃"],["ceno","我吃晚餐"],["estudio español","我學西班牙語"],["leo","我閱讀"],["veo la tele","我看電視"],["me acuesto","我上床睡覺"],["siempre","總是"],["normalmente","通常"],["a veces","有時候"],["nunca","從不"],["Me levanto a las siete.","我七點起床。"],["¿Qué haces?","你在做什麼？／你做什麼？"]],
+g:`<p>規則動詞依照結尾（-ar、-er、-ir）變化：</p>
+<table><tr><td></td><td class="es">hablar 說</td><td class="es">comer 吃</td><td class="es">vivir 住</td></tr>
+<tr><td>yo</td><td>hablo</td><td>como</td><td>vivo</td></tr><tr><td>tú</td><td>hablas</td><td>comes</td><td>vives</td></tr><tr><td>él/ella</td><td>habla</td><td>come</td><td>vive</td></tr><tr><td>nosotros</td><td>hablamos</td><td>comemos</td><td>vivimos</td></tr><tr><td>vosotros</td><td>habláis</td><td>coméis</td><td>vivís</td></tr><tr><td>ellos</td><td>hablan</td><td>comen</td><td>viven</td></tr></table>
+<ul><li><b>反身動詞</b>（動作做在自己身上）要加 me/te/se…：<b>me</b> levanto, <b>te</b> levantas, <b>se</b> levanta, <b>nos</b> levantamos。</li>
+<li>頻率副詞：siempre &gt; normalmente &gt; a veces &gt; nunca。</li></ul>`,
+d:[["¿A qué hora te levantas?","你幾點起床？"],["Me levanto a las siete.","我七點起床。"],["¿Y qué haces por la tarde?","那你下午做什麼？"],["Normalmente estudio español.","我通常學西班牙語。"]],
+p:"用西語寫下你的一天（5–8 句）：Me levanto a las…, desayuno…, trabajo…。給老公看，請他幫你改錯，然後大聲唸出來。"},
+
+{t:"購物、衣服、顏色",es:"De compras",w:[
+["la ropa","衣服"],["la camiseta","T 恤"],["la camisa","襯衫"],["los pantalones","褲子"],["la falda","裙子"],["el vestido","洋裝"],["los zapatos","鞋子"],["el abrigo","大衣"],["rojo","紅色的"],["azul","藍色的"],["verde","綠色的"],["amarillo","黃色的"],["negro","黑色的"],["blanco","白色的"],["grande","大的"],["pequeño","小的"],["caro","貴的"],["barato","便宜的"],["¿Tiene una talla más grande?","有大一號的嗎？"],["Me lo llevo.","我買這個。"],["Solo estoy mirando.","我只是看看。"]],
+g:`<ul><li>形容詞通常放在名詞<b>後面</b>：un vestido <b>rojo</b>（一件紅色洋裝）。</li>
+<li>形容詞要跟名詞的陰陽性和單複數一致：<br>un vestido roj<b>o</b> · una falda roj<b>a</b> · zapatos roj<b>os</b> · camisas roj<b>as</b></li>
+<li>以 -e 或子音結尾的形容詞男女一樣：verde, azul, grande。複數加 s/es：verdes, azules。</li>
+<li>指示詞：<b>este</b>／<b>esta</b>（這個）、<b>estos</b>／<b>estas</b>（這些）：Esta camisa es muy bonita。</li></ul>`,
+d:[["Hola, ¿puedo ayudarle?","您好，需要幫忙嗎？"],["Sí. ¿Tiene este vestido en azul?","是的。這件洋裝有藍色的嗎？"],["Sí, aquí tiene.","有，給您。"],["¿Cuánto cuesta?","多少錢？"],["Treinta euros.","三十歐元。"],["Me lo llevo.","我買了。"]],
+p:"打開購物網站，用西語說出衣服的顏色、大小、貴不貴：Esta camisa es azul y barata。然後模擬在店裡買衣服，老公當店員。"},
+
+{t:"天氣與計畫",es:"El tiempo y los planes",w:[
+["Hace calor.","天氣很熱。"],["Hace frío.","天氣很冷。"],["Hace sol.","出太陽。"],["Llueve.","下雨。"],["Hace buen tiempo.","天氣很好。"],["en verano","在夏天"],["en invierno","在冬天"],["la playa","海灘"],["la montaña","山"],["el cine","電影院"],["viajar","旅行"],["ir de compras","去購物"],["quedar con amigos","和朋友見面"],["¿Qué vas a hacer este fin de semana?","這個週末你要做什麼？"],["Voy a visitar a mi suegra.","我要去拜訪我婆婆。"],["¿Quedamos mañana?","我們明天見面好嗎？"],["¡Vale!","好的！（西班牙常用）"]],
+g:`<p><b>ir（去）</b>是不規則動詞：</p>
+<table><tr><td>yo</td><td class="es">voy</td></tr><tr><td>tú</td><td class="es">vas</td></tr><tr><td>él/ella/usted</td><td class="es">va</td></tr><tr><td>nosotros</td><td class="es">vamos</td></tr><tr><td>vosotros</td><td class="es">vais</td></tr><tr><td>ellos/ustedes</td><td class="es">van</td></tr></table>
+<ul><li><b>ir a + 動詞原形</b> = 將要做…（說未來最簡單的方法）：Voy a viajar a España（我要去西班牙旅行）。</li>
+<li><b>ir a + 地點</b> = 去某地：Voy a la playa. Voy <b>al</b> cine（a + el = al）。</li>
+<li>天氣用 <b>hace</b>：hace calor／frío／sol／viento。</li></ul>`,
+d:[["¿Qué vas a hacer este fin de semana?","這個週末你要做什麼？"],["Voy a ir a la playa. ¡Hace sol!","我要去海灘。出太陽了！"],["¡Qué bien! Yo voy a visitar a mi madre.","真好！我要去看我媽媽。"],["¿Quedamos el domingo?","我們星期日見面好嗎？"],["¡Vale!","好啊！"]],
+p:"每天早上用西語說今天的天氣。週末一起用西語計畫：Vamos a… 也可以一起計畫你們搬去西班牙後第一個週末要做什麼！"},
+
+{t:"身體狀況與總複習",es:"La salud y repaso",w:[
+["Estoy cansada.","我很累。（女性）"],["Estoy enferma.","我生病了。（女性）"],["Estoy contenta.","我很開心。（女性）"],["Estoy nerviosa.","我很緊張。（女性）"],["Me duele la cabeza.","我頭痛。"],["Me duele el estómago.","我胃痛。"],["Tengo fiebre.","我發燒了。"],["el médico","醫生"],["el centro de salud","診所（社區衛生中心）"],["la receta","處方"],["Necesito un médico.","我需要看醫生。"],["¿Me puede ayudar?","您可以幫我嗎？"],["¡Ayuda!","救命！"],["¿Qué te pasa?","你怎麼了？"]],
+g:`<p><b>ser 和 estar</b> 都是「是」，A1 最重要的區別：</p>
+<ul><li><b>ser</b> = 本質、身分：國籍、職業、個性、外表 → Soy taiwanesa. Es alto. Es simpática.</li>
+<li><b>estar</b> = 位置、暫時的狀態、心情 → Estoy en casa. Estoy cansada. Está enfermo.</li>
+<li><b>me duele</b> + 單數（me duele la cabeza），<b>me duelen</b> + 複數（me duelen los pies）。</li>
+<li>描述自己時形容詞用陰性：cansad<b>a</b>, enferm<b>a</b>, content<b>a</b>。</li></ul>
+<p><b>A1 考試（DELE A1）</b>分四部分：閱讀、聽力、寫作、口說。這週把每一週的測驗都再做一次，並請老公模擬口說考試。</p>
+<p class="mute">在西班牙，緊急電話是 112。</p>`,
+d:[["¿Qué te pasa?","你怎麼了？"],["Me duele la cabeza. Estoy cansada.","我頭痛，很累。"],["¿Necesitas un médico?","你需要看醫生嗎？"],["No, gracias. Voy a descansar.","不用，謝謝。我要休息一下。"]],
+p:"模擬 A1 口說考試：先自我介紹 2 分鐘（名字、國籍、家人、工作、喜好、日常），再回答老公隨機問的 5 個問題。恭喜，你快完成 A1 了！"}
+];
+const TASKS=["學單字（前半）","學單字（後半）","讀文法","聽對話並跟讀","單字卡複習","測驗＋和老公練習"];
+
+/* ---------- 狀態 ---------- */
+const KEY="espA1_v1";
+function iso(d){const z=new Date(d.getTime()-d.getTimezoneOffset()*6e4);return z.toISOString().slice(0,10)}
+let S={start:iso(new Date()),known:{},tasks:{},best:{},miss:{},rate:0.85};
+try{const r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r))}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function daysSince(){const a=new Date(S.start+"T00:00:00"),b=new Date(iso(new Date())+"T00:00:00");return Math.round((b-a)/864e5)}
+function curWeek(){const d=daysSince();if(d<0)return 0;return Math.min(12,Math.floor(d/7)+1)}
+function curDay(){const d=daysSince();if(d<0)return 0;if(d>=84)return 7;return d%7+1}
+function weekDone(wi){return TASKS.every((_,i)=>S.tasks[wi+"-"+i])}
+const ALL=[];W.forEach((w,wi)=>w.w.forEach((x,i)=>ALL.push({es:x[0],zh:x[1],id:wi+"-"+i,wi})));
+const byId=id=>ALL.find(a=>a.id===id);
+
+/* ---------- 語音 ---------- */
+let voices=[];
+function loadV(){try{voices=speechSynthesis.getVoices()}catch(e){}}
+if("speechSynthesis" in window){loadV();speechSynthesis.onvoiceschanged=loadV}
+function say(t){
+  try{
+    if(!("speechSynthesis" in window)){toast("這個瀏覽器不支援語音");return}
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(t.replace(/…/g," ").replace(/\s*\/\s*/g,", "));
+    const v=voices.find(v=>v.lang==="es-ES")||voices.find(v=>/^es/i.test(v.lang));
+    if(v)u.voice=v;else if(voices.length)toast("找不到西班牙語語音，請在手機設定中下載");
+    u.lang="es-ES";u.rate=S.rate;speechSynthesis.speak(u);
+  }catch(e){toast("無法播放語音")}
+}
+function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("on");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("on"),2200)}
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+
+/* ---------- 畫面 ---------- */
+const app=document.getElementById("app");
+let view="home",arg=null,FC=null,QZ=null;
+function go(v,a){view=v;arg=a;FC=null;QZ=null;render();window.scrollTo(0,0)}
+function render(){
+  document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.go===view||(view==="week"&&b.dataset.go==="course")));
+  ({home,course,week,cards,quiz,settings})[view]();
+}
+
+function home(){
+  const wk=curWeek(),dy=curDay(),known=Object.keys(S.known).length,done=W.filter((_,i)=>weekDone(i)).length;
+  let today="";
+  if(wk===0) today=`<p>課程將在 <b>${S.start}</b> 開始。可以先看看第 1 週！</p><button class="btn full" data-week="0">預習第 1 週</button>`;
+  else if(daysSince()>=84) today=`<div class="big-emoji">🎉</div><p style="text-align:center"><b>¡Enhorabuena!</b> 12 週完成了！<br>繼續用單字卡和測驗複習，準備 DELE A1 考試。</p>`;
+  else{
+    const w=W[wk-1];
+    const tk=dy===7?"休息日 🌿 或複習錯題":TASKS[dy-1];
+    today=`<p class="mute">第 ${wk} 週・第 ${dy} 天</p><h2>${w.t} <span class="es mute">· ${w.es}</span></h2>
+    <div class="tip">今天的任務：<b>${tk}</b></div>
+    <button class="btn full" data-week="${wk-1}">開始今天的學習</button>`;
+  }
+  const missN=Object.keys(S.miss).length;
+  app.innerHTML=`<div class="card"><h3>¡Hola! 今天</h3>${today}</div>
+  <div class="card"><h3>我的進度</h3>
+  <div class="bar"><i style="width:${Math.round(known/ALL.length*100)}%"></i></div>
+  <p class="mute" style="margin:6px 0 12px">已記住 ${known} / ${ALL.length} 個單字和句子</p>
+  <div class="stats"><div><b>${done}</b><span>完成的週數</span></div><div><b>${wk||"–"}</b><span>目前週數</span></div><div><b>${missN}</b><span>待複習錯題</span></div></div>
+  ${missN?`<button class="btn alt full" data-go2="cards" data-arg="miss">複習錯題 (${missN})</button>`:""}
+  </div>
+  <div class="card"><h3>學習方法</h3><ul style="padding-left:20px;margin:0">
+  <li>每天 30 分鐘，每週 6 天，第 7 天休息。</li>
+  <li>每個單字都可以點一下聽發音，要<b>大聲跟著唸</b>。</li>
+  <li>老公是最好的老師：每週最後一天和他一起練習。</li>
+  <li>測驗答錯的字會自動加進「錯題」，記得複習。</li></ul></div>`;
+}
+
+function course(){
+  const wk=curWeek();
+  app.innerHTML=`<h2>12 週課程</h2>`+W.map((w,i)=>{
+    const d=weekDone(i),n=TASKS.filter((_,t)=>S.tasks[i+"-"+t]).length;
+    const cls=d?"done":(i===wk-1?"now":"");
+    return `<div class="card week" data-week="${i}"><div class="wn ${cls}">${d?"✓":i+1}</div>
+    <div class="t"><b>${w.t}</b><small class="es">${w.es}</small><small>${n}/6 任務${S.best[i]!=null?" · 測驗最高 "+S.best[i]+"/10":""}</small></div><span>›</span></div>`}).join("");
+}
+
+function week(){
+  const wi=arg,w=W[wi],wk=curWeek(),dy=curDay();
+  app.innerHTML=`<button class="back" data-go2="course">‹ 課程</button>
+  <p class="mute" style="margin:0">第 ${wi+1} 週</p><h2>${w.t} <span class="es mute">· ${w.es}</span></h2>
+  <div class="card"><h3>本週任務</h3>${TASKS.map((t,i)=>{const id=wi+"-"+i;return `<div class="task ${S.tasks[id]?"on":""} ${wi===wk-1&&i===dy-1?"today":""}" data-task="${id}"><div class="cb">${S.tasks[id]?"✓":""}</div><span>第 ${i+1} 天：${t}</span></div>`}).join("")}</div>
+  <div class="card"><h3>單字與句子 <span class="mute" style="font-weight:400">（點一下聽發音）</span></h3><ul class="words">
+  ${w.w.map((x,i)=>`<li data-say="${esc(x[0])}"><span><span class="spk">🔊</span><span class="es">${esc(x[0])}</span> ${S.known[wi+"-"+i]?'<span class="k">✓</span>':""}</span><span class="z">${x[1]}</span></li>`).join("")}</ul>
+  <div class="row" style="margin-top:10px"><button class="btn" data-go2="cards" data-arg="${wi}">🃏 單字卡</button><button class="btn" data-go2="quiz" data-arg="${wi}">✏️ 測驗</button></div></div>
+  <div class="card gram"><h3>文法</h3>${w.g}</div>
+  <div class="card"><h3>對話 <span class="mute" style="font-weight:400">（點一句聽一句）</span></h3><div class="dlg">${w.d.map(x=>`<p data-say="${esc(x[0])}"><span class="es">${esc(x[0])}</span><small>${x[1]}</small></p>`).join("")}</div>
+  <button class="btn alt full" id="playall">▶ 播放整段對話</button></div>
+  <div class="card"><h3>💑 和老公一起練習</h3><p style="margin:0">${w.p}</p></div>`;
+  document.getElementById("playall").onclick=()=>say(w.d.map(x=>x[0]).join(" … "));
+}
+
+function cards(){
+  const weekSel=arg==null?Math.max(0,curWeek()-1):arg;
+  if(!FC){
+    const ids=weekSel==="miss"?Object.keys(S.miss):weekSel==="all"?ALL.map(a=>a.id):W[weekSel].w.map((_,i)=>weekSel+"-"+i);
+    FC={sel:weekSel,deck:shuf(ids),flip:false,total:ids.length,done:0};
+  }
+  const opts=`<option value="miss">❗ 錯題 (${Object.keys(S.miss).length})</option><option value="all">全部單字</option>`+W.map((w,i)=>`<option value="${i}">第 ${i+1} 週・${w.t}</option>`).join("");
+  let body;
+  if(!FC.deck.length){
+    body=FC.total?`<div class="card flash"><div class="big-emoji">🎉</div><p><b>¡Muy bien!</b> 這組全部完成了！</p><button class="btn" id="again">再練一次</button></div>`
+      :`<div class="card flash"><p>這裡還沒有單字。答錯的測驗題會出現在「錯題」。</p></div>`;
+  }else{
+    const c=byId(FC.deck[0]);
+    body=`<p class="mute" style="text-align:center">剩下 ${FC.deck.length} 張 · 點卡片翻面</p>
+    <div class="card flash" id="fc"><div class="big es">${esc(c.es)}</div>${FC.flip?`<div class="zh">${c.zh}</div>`:`<div class="mute" style="margin-top:12px">這是什麼意思？</div>`}</div>
+    <div class="row"><button class="btn alt" data-say="${esc(c.es)}">🔊 聽</button></div>
+    ${FC.flip?`<div class="row" style="margin-top:8px"><button class="btn alt" id="again1">🔁 再看一次</button><button class="btn ok" id="got">✓ 記住了</button></div>`:""}`;
+  }
+  app.innerHTML=`<h2>單字卡</h2><select id="sel">${opts}</select><div style="height:12px"></div>${body}`;
+  document.getElementById("sel").value=String(FC.sel);
+  document.getElementById("sel").onchange=e=>{const v=e.target.value;arg=(v==="miss"||v==="all")?v:+v;FC=null;render()};
+  const fc=document.getElementById("fc");
+  if(fc)fc.onclick=()=>{FC.flip=!FC.flip;if(FC.flip)say(byId(FC.deck[0]).es);render()};
+  const g=document.getElementById("got");
+  if(g)g.onclick=()=>{const id=FC.deck.shift();S.known[id]=1;if(FC.sel==="miss")delete S.miss[id];save();FC.flip=false;render()};
+  const a1=document.getElementById("again1");
+  if(a1)a1.onclick=()=>{FC.deck.push(FC.deck.shift());FC.flip=false;render()};
+  const ag=document.getElementById("again");
+  if(ag)ag.onclick=()=>{FC=null;render()};
+}
+
+function makeQuiz(sel){
+  let cur,prev=[];
+  if(sel==="mix"){const lim=Math.max(1,curWeek());cur=ALL.filter(a=>a.wi<lim)}
+  else{cur=ALL.filter(a=>a.wi===sel);prev=ALL.filter(a=>a.wi<sel)}
+  let picks=shuf(cur).slice(0,prev.length?7:10);
+  if(prev.length)picks=picks.concat(shuf(prev).slice(0,3));
+  picks=shuf(picks);
+  return picks.map(p=>{
+    const type=Math.floor(Math.random()*3); // 0 中→西, 1 聽→中, 2 西→中
+    const pool=shuf(ALL.filter(a=>a.id!==p.id&&a.wi===p.wi)).concat(shuf(ALL.filter(a=>a.wi!==p.wi)));
+    const opts=[p];for(const a of pool){const key=type===0?a.es:a.zh;if(!opts.some(o=>(type===0?o.es:o.zh)===key))opts.push(a);if(opts.length===4)break}
+    return {p,type,opts:shuf(opts)};
+  });
+}
+function quiz(){
+  const sel=arg==null?Math.max(0,curWeek()-1):arg;
+  if(!QZ||QZ.sel!==sel){QZ={sel,qs:makeQuiz(sel),i:0,score:0,ans:null,started:false}}
+  const opts=`<option value="mix">綜合測驗（到目前為止）</option>`+W.map((w,i)=>`<option value="${i}">第 ${i+1} 週・${w.t}</option>`).join("");
+  let body;
+  if(!QZ.started){
+    body=`<div class="card"><p>10 題選擇題：看中文選西語、看西語選中文，還有聽力題 🔊。答錯的字會加進「錯題」。</p>
+    ${typeof sel==="number"&&S.best[sel]!=null?`<p class="mute">這週最高分：${S.best[sel]}/10</p>`:""}
+    <button class="btn full" id="start">開始測驗</button></div>`;
+  }else if(QZ.i>=QZ.qs.length){
+    const n=QZ.qs.length,s=QZ.score;
+    if(typeof sel==="number"){S.best[sel]=Math.max(S.best[sel]||0,s);save()}
+    const msg=s>=n*.9?"¡Excelente! 太棒了！":s>=n*.7?"¡Muy bien! 很好！":"¡Ánimo! 加油，再練一次！";
+    body=`<div class="card" style="text-align:center"><div class="big-emoji">${s>=n*.7?"🎉":"💪"}</div><h2>${s} / ${n}</h2><p>${msg}</p>
+    <div class="row"><button class="btn alt" data-go2="cards" data-arg="miss">複習錯題</button><button class="btn" id="re">再測一次</button></div></div>`;
+  }else{
+    const q=QZ.qs[QZ.i],p=q.p;
+    const prompt=q.type===0?`<div class="q">${p.zh}</div><p class="mute" style="text-align:center">選出正確的西班牙語</p>`
+      :q.type===1?`<div class="q"><button class="btn" data-say="${esc(p.es)}" id="lis">🔊 播放</button></div><p class="mute" style="text-align:center">聽聽看，是什麼意思？</p>`
+      :`<div class="q es">${esc(p.es)}</div><p class="mute" style="text-align:center">這是什麼意思？</p>`;
+    body=`<p class="mute">第 ${QZ.i+1} / ${QZ.qs.length} 題 · 得分 ${QZ.score}</p><div class="card">${prompt}
+    ${q.opts.map((o,k)=>{let c="";if(QZ.ans!=null){if(o.id===p.id)c="good";else if(k===QZ.ans)c="badx"}
+      return `<button class="opt ${c} ${q.type===0?"es":""}" data-opt="${k}">${q.type===0?esc(o.es):o.zh}</button>`}).join("")}
+    ${QZ.ans!=null?`<p style="margin:10px 0 0"><span class="es">${esc(p.es)}</span> = ${p.zh}</p><button class="btn full" id="next">下一題 ›</button>`:""}</div>`;
+  }
+  app.innerHTML=`<h2>測驗</h2><select id="sel">${opts}</select><div style="height:12px"></div>${body}`;
+  document.getElementById("sel").value=String(sel);
+  document.getElementById("sel").onchange=e=>{const v=e.target.value;arg=v==="mix"?v:+v;QZ=null;render()};
+  const st=document.getElementById("start");if(st)st.onclick=()=>{QZ.started=true;render();const q=QZ.qs[0];if(q.type===1)say(q.p.es)};
+  const re=document.getElementById("re");if(re)re.onclick=()=>{QZ=null;render();QZ.started=true;render()};
+  const nx=document.getElementById("next");if(nx)nx.onclick=()=>{QZ.i++;QZ.ans=null;render();const q=QZ.qs[QZ.i];if(q&&q.type===1)say(q.p.es)};
+  app.querySelectorAll("[data-opt]").forEach(b=>b.onclick=()=>{
+    if(QZ.ans!=null)return;const k=+b.dataset.opt,q=QZ.qs[QZ.i];QZ.ans=k;
+    if(q.opts[k].id===q.p.id){QZ.score++;delete S.miss[q.p.id]}else{S.miss[q.p.id]=1;delete S.known[q.p.id]}
+    save();say(q.p.es);render();
+  });
+}
+
+let confirmReset=false;
+function settings(){
+  app.innerHTML=`<h2>設定</h2>
+  <div class="card"><h3>開始日期</h3><p class="mute">用來計算今天是第幾週、第幾天。</p><input type="date" id="sd" value="${S.start}">
+  <p class="mute" style="margin-bottom:0">結束日期：${(()=>{const d=new Date(S.start+"T00:00:00");d.setDate(d.getDate()+83);return iso(d)})()}</p></div>
+  <div class="card"><h3>語音速度</h3><input type="range" id="rt" min="0.5" max="1.2" step="0.05" value="${S.rate}">
+  <p class="mute" id="rtv">${S.rate}×</p><button class="btn alt full" data-say="Hola, me llamo Mei. Soy de Taiwán y estudio español.">🔊 試聽</button>
+  <p class="mute">沒有聲音？iPhone 請關掉靜音開關；Android 請在「文字轉語音」設定中下載西班牙語（España）。</p></div>
+  <div class="card"><h3>重設進度</h3><p class="mute">進度只存在這台裝置的瀏覽器裡。</p>
+  <button class="btn ${confirmReset?"":"alt"} full" id="rs">${confirmReset?"確定要清除所有進度嗎？再按一次":"清除所有進度"}</button></div>`;
+  document.getElementById("sd").onchange=e=>{if(e.target.value){S.start=e.target.value;save();render();toast("已更新開始日期")}};
+  const rt=document.getElementById("rt");rt.oninput=()=>{S.rate=+rt.value;document.getElementById("rtv").textContent=S.rate+"×";save()};
+  document.getElementById("rs").onclick=()=>{if(!confirmReset){confirmReset=true;render();return}
+    confirmReset=false;S={start:iso(new Date()),known:{},tasks:{},best:{},miss:{},rate:0.85};save();toast("已清除");go("home")};
+}
+
+/* ---------- 事件 ---------- */
+document.addEventListener("click",e=>{
+  const s=e.target.closest("[data-say]");if(s&&s.id!=="fc"){say(s.dataset.say)}
+  const g=e.target.closest("[data-go]");if(g){confirmReset=false;go(g.dataset.go);return}
+  const g2=e.target.closest("[data-go2]");if(g2){const a=g2.dataset.arg;go(g2.dataset.go2,a==null?null:(isNaN(a)?a:+a));return}
+  const wk=e.target.closest("[data-week]");if(wk){go("week",+wk.dataset.week);return}
+  const t=e.target.closest("[data-task]");if(t){const id=t.dataset.task;if(S.tasks[id])delete S.tasks[id];else S.tasks[id]=1;save();render();if(weekDone(arg)&&S.tasks[id])toast("¡Muy bien! 本週完成 🎉")}
+});
+render();
+</script>
+</body>
+</html>
